@@ -1,0 +1,24 @@
+{
+  "name": "product-locator-poc",
+  "version": "1.0.0",
+  "description": "Application to Locate product based on Current Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab"
+  },
+  "author": "Steven Weathers <hello@stevenweathers.com> (http://stevenweathers.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.2",
+    "handlebars": "^4.0.5",
+    "hapi": "^13.3.0",
+    "lodash": "^4.11.1",
+    "strman": "^1.0.3",
+    "vision": "^4.1.0",
+    "wreck": "^7.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "lab": "^10.3.2"
+  }
+}

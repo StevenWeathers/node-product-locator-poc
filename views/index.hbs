@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="http://www.lowescdn.com/scaffold/dev/css/scaffold.min.css" />
+
+<div class="nav-bar material material-primary nav-bar-large v-spacing-extra-large">
+	<div class="grid-100">
+		<i aria-hidden="true" class="icon-lowes icon-5x white"></i>
+	</div>
+</div>
+
+<div class="grid-container fluid-grid-container">
+	<h1>Find a product in Retail Stores near you!</h1>
+
+	<form id="FindPricesForm" role="form" autocomplete="on" method="get" action="/" novalidate="novalidate" class="grid-100 grid-parent v-spacing-jumbo">
+		<div class="grid-50 mobile-grid-100 tablet-grid-50">
+			<div class="form-group">
+				<label for="storeNumber-input">Store Number:</label>
+				<input name="storeNumber" type="text" class="form-control" id="storeNumber-input" placeholder="0595">
+				<span class="inline-help">Enter Store Number. I.E Example: 0595</span>
+			</div>
+
+			<div class="form-group">
+				<label for="productId-input">Product ID:</label>
+				<input name="productId" type="text" class="form-control" id="productId-input" placeholder="50356936">
+				<span class="inline-help">Enter ProductId. I.E Example: 50356936</span>
+			</div>
+
+			<button role="button" type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+
+	<div id="PriceResults"></div>
+</div>
+
+<script>
+	(function() {
+	  document.getElementById("FindPricesForm")
+		.addEventListener("submit", function(event){
+			event.preventDefault();
+			var storeNumber = document.getElementById("storeNumber-input").value;
+			var productId = document.getElementById("productId-input").value;
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', encodeURI('/lookup/'+productId+'/store/'+storeNumber));
+			xhr.onload = function() {
+			    if (xhr.status === 200) {
+			        document.getElementById('PriceResults').innerHTML = xhr.responseText;
+			    }
+			    else {
+			    	document.getElementById('PriceResults').innerHTML = 'Request failed.  Returned status of ' + xhr.status;
+			    }
+			};
+			xhr.send();
+		});
+	})();
+</script>

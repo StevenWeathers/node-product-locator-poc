@@ -1,0 +1,31 @@
+<div class="grid-100 grid-parent v-spacing-large">
+	<h2 class="pull-left">Prices</h2>
+	<div class="pull-right"><a class="btn btn-add btn-large" href="#lowestPrice">Go To Lowest Price</a></div>
+</div>
+
+<div class="grid-100 grid-parent">
+	<table class="table striped full-width no-borders fluffy">
+		<thead>
+		   <tr>
+		   		<th>Price</th>
+		   		<th>Was</th>
+				<th>Store Number</th>
+				<th>Store Name</th>
+				<th>Miles to Store</th>
+				<th>OnHand</th>
+		   </tr>
+		</thead>
+		<tbody>
+			{{#each storePrices}}
+				<tr {{#if lowestPrice}}class="lowesBlue strong" id="lowestPrice"{{/if}}>
+					<td>${{price.selling}}</td>
+					<td>${{price.was}}</td>
+					<td>{{storeNumber}}</td>
+					<td>{{storeName}}</td>
+					<td>{{milesToStore}}</td>
+					<td>{{onHand}}</td>
+		       </tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
